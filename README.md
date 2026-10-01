@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 僕がNext.jsのチュートリアルをやるなら
 
-## Getting Started
+> Day 1の3画面と動的ルートを実装し、lint・型検査・buildを確認しました。ブラウザーでの表示・画面遷移は未確認です。
 
-First, run the development server:
+既存のWeb開発経験を持つ開発者が、Next.js公式App Router Docsを中心に、必要に応じてLearnも使い、7日間でWebアプリの主要機能を試して設計判断や理解の穴を記録するプロジェクトです。成果物として、学習テーマを動作で確かめるサンプルアプリを作ります。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 問い
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+既存のWeb開発経験を持つ開発者がNext.jsを7日間で使ってみるとき、設計判断・理解の穴・実務との差をどこまで言語化できるか。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 作るもの
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+YouTube風の動画閲覧アプリを作ります。トップ・動画・検索・チャンネルの各画面と、いいね・コメントなどの閲覧者向け操作を通じてNext.jsを学びます。表示する動画・チャンネルは架空のモックデータを基本とし、データ取得の学習ではJSONPlaceholder系の外部APIも試す予定です。実際のYouTubeサービスや実在の利用者データは扱いません。
 
-## Learn More
+## 範囲
 
-To learn more about Next.js, take a look at the following resources:
+- 公式App Router Docsを参考にした独自の7日間計画で、Routing、Server／Client Components、データ取得、いいね・コメントなどの対話操作、描画・キャッシュ、品質、公開準備を扱う。
+- 7日以降のCache、Security、Testingなどは、必要性が確認できたテーマだけを深掘りする。
+- 使用するNext.jsの版・環境・対象範囲は`00_docs/brief.md`に記載し、参照した教材と検証結果は各Dayの学習記録に残す。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 現在地
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2026-10-01にDay 1として、トップ（`/`）、About（`/about`）、動画詳細（`/watch/[id]`）を実装しました。共通レイアウトと`Link`を使い、URLのIDに対応する固定モック動画を表示します。動画プレビューはCSSのプレースホルダーで、動画再生機能はありません。
 
-## Deploy on Vercel
+`npm run lint`・`npm run build`・build後の`npx tsc --noEmit`は成功しています。一方、production serverの起動時に実行環境のポート制限による`listen EPERM`が発生したため、HTTP応答とブラウザーでの表示・画面遷移、未知の動画IDのHTTP 404応答は未確認です。Day 1の到達点のうち、動作確認は残っています。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+検索・チャンネル画面、いいね・コメント、外部API連携は後続の日に扱います。詳細は[Day 1の学習記録](00_docs/learning-records/day-1.md)を参照してください。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 非対象
+
+- 初学者一般の理解度の評価
+- 公式教材そのものの品質評価
+- 管理画面、動画の登録・編集・削除、認証・認可の実装
+- 7日間の学習完了だけを根拠とした本番採用判断
+
+## 記録と検証
+
+開始前に`00_docs/brief.md`、各日の実施前に`00_docs/validation-plan.md`を確認します。記録は`00_docs/learning-record-template.md`を使用し、教材の指示・実施内容・観測事実・自分の解釈・設計判断・未検証事項を区別します。基準環境はmacOS、Node.js v24.21.0、npm 11.19.0、Next.js 16.3.5、React／React DOM 19.2.8、TypeScript 5.9.3です。依存関係は`package-lock.json`で固定しています。
+
+ローカル起動は`npm ci`→`npm run dev`です。静的確認は`npm run lint`・`npm run build`・`npx tsc --noEmit`で行います。型検査はbuildによる型生成後に実行します。Day別の動作結果やテストコマンドは実施後に記録します。
+
+7日間の学習完了やbuild成功だけで本番運用可能とは判断しません。アプリのデプロイ・一般公開は任意とし、`00_docs/brief.md`の公開条件を確認して企画オーナーが別途判断します。
+
+## プロジェクト資料
+
+- 企画概要・範囲: [`00_docs/brief.md`](00_docs/brief.md)
+- 検証条件・証拠: [`00_docs/validation-plan.md`](00_docs/validation-plan.md)
+- 学習記録の形式: [`00_docs/learning-record-template.md`](00_docs/learning-record-template.md)
+
+## License
+
+MIT License。条件は[`LICENSE`](LICENSE)を参照してください。教材由来のコード・素材は、対象教材のライセンスと利用条件も確認します。
