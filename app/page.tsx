@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { videos } from './watch/data'
 
 export default function HomePage() {
@@ -24,11 +25,14 @@ export default function HomePage() {
           {videos.map((video) => (
             <li className='video-card' key={video.id}>
               <Link className='video-card-link' href={`/watch/${video.id}`}>
-                <div
-                  aria-hidden='true'
-                  className='video-thumbnail'
-                  data-tone={video.tone}
-                >
+                <div className='video-thumbnail'>
+                  <Image
+                    alt=''
+                    className='thumbnail-image'
+                    height={360}
+                    src={video.thumbnail}
+                    width={640}
+                  />
                   <span>{video.duration}</span>
                 </div>
                 <div className='video-card-content'>

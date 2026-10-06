@@ -9,7 +9,7 @@ export const videos = [
     duration: '12:48',
     description:
       'お気に入りのコーヒーを淹れて、朝の時間をゆっくり楽しむ様子を紹介します。',
-    tone: 'sage',
+    thumbnail: '/quiet-morning.svg',
   },
   {
     id: 'small-cafe',
@@ -20,7 +20,7 @@ export const videos = [
     duration: '08:32',
     description:
       '路地裏で見つけたカフェと、そこで過ごす穏やかな午後の記録です。',
-    tone: 'rose',
+    thumbnail: '/small-cafe.svg',
   },
   {
     id: 'make-lunch',
@@ -30,7 +30,7 @@ export const videos = [
     publishedAt: '2週間前',
     duration: '15:06',
     description: '旬の野菜を使って、家でも作りやすいランチを用意します。',
-    tone: 'sky',
+    thumbnail: '/make-lunch.svg',
   },
 ] as const
 

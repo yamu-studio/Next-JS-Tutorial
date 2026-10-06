@@ -20,7 +20,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family:
-    Arial, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+    var(--font-project-sans), Arial, 'Hiragino Kaku Gothic ProN', 'Yu Gothic',
+    Meiryo, sans-serif;
   line-height: 1.7;
 }
 
@@ -197,7 +198,9 @@ h2 {
 }
 
 .video-thumbnail {
+  position: relative;
   display: grid;
+  overflow: hidden;
   min-height: 180px;
   place-items: center;
   background: #e9eee5;
@@ -206,17 +209,18 @@ h2 {
   font-weight: 700;
 }
 
-.video-thumbnail[data-tone='rose'] {
-  background: #f0e5e1;
-  color: #84594d;
-}
-
-.video-thumbnail[data-tone='sky'] {
-  background: #e3ebed;
-  color: #52727b;
+.thumbnail-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .video-thumbnail span {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
   padding: 4px 9px;
   border-radius: 4px;
   background: rgb(38 53 46 / 78%);
@@ -256,16 +260,26 @@ h2 {
 }
 
 .watch-player {
+  position: relative;
   display: grid;
   min-height: 400px;
-  align-content: center;
-  justify-items: center;
+  overflow: hidden;
+  place-items: center;
   border-radius: 8px;
   background: #202520;
   color: var(--white);
 }
 
+.watch-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .watch-player span {
+  z-index: 1;
   display: grid;
   width: 64px;
   height: 64px;
@@ -276,6 +290,7 @@ h2 {
 }
 
 .watch-player p {
+  z-index: 1;
   margin: 12px 0 0;
   color: #d4d9d4;
   font-size: 0.85rem;

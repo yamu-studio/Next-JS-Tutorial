@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+// こんなふうに(pages)という名前でグルーピングできる → Route Group
 export default function AboutPage() {
   return (
     <article className='prose'>

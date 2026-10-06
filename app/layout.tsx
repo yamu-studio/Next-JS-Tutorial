@@ -1,6 +1,13 @@
 import type { Metadata } from 'next'
+import { Noto_Sans_JP } from 'next/font/google'
 import Link from 'next/link'
 import './globals.css'
+
+const projectFont = Noto_Sans_JP({
+  subsets: ['latin'],
+  variable: '--font-project-sans',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -12,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang='ja'>
+    <html className={projectFont.variable} lang='ja'>
       <body>
         {/* layout.tsx は全ページ共通の枠を作り、各 page.tsx を children に表示します。 */}
         <div className='site-shell'>
